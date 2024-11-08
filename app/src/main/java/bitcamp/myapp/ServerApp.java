@@ -28,13 +28,14 @@ public class ServerApp implements WebMvcConfigurer {
   }
 
   public static void main(String[] args) {
+    a = 100;
     SpringApplication.run(ServerApp.class, args);
   }
 
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
     registry.addInterceptor(new AdminInterceptor())
-            .addPathPatterns("/users*");
+        .addPathPatterns("/users*");
   }
 
   @Override
