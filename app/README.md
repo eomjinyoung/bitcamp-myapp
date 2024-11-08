@@ -67,9 +67,17 @@
 - Docker 엔진 설치
 - Docker Image 만들기
   - Dockerfile 생성
+  - Docker 허브 리포지토리 생성
+    - 회원 가입
+    - "bitcamp" 개인 저장소 생성
   - 이미지 빌드
-    - `docker build -t 도커허브사용자아이디/이미지명:태그명 .`
-
+    - `docker build -t username/bitcamp:myapp .`
+  - 도커 허브 로그인
+    - `docker login`
+  - 도커 허브에 이미지 올리기
+    - `docker push eomjinyoung/bitcamp:myapp`
+- Docker 컨테이너 생성 및 실행
+  - 
 
 ## 소스 파일
 
