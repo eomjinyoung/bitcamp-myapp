@@ -16,7 +16,7 @@
 
 - 배포 파일 생성 및 실행 확인
   - build.gradle 변경
-  - $ java -jar myapp.jar 
+  - $ java -jar myapp.jar
 - 스프링부트 설정 파일을 개발과 운영으로 분리
   - application-dev.properties (개발)
   - application-prod.properties (운영)
@@ -31,8 +31,45 @@
     - 프로그램 아규먼트: `--spring.profiles.active=dev`
       - 예) $ java -jar myapp.jar --spring.profiles.active=prod
       - 예) $ gradle bootRun --args='--spring.profiles.active=dev'
+- myapp 프로젝트를 별도의 repository로 분리
+  - bitcamp-myapp repository 생성
+  - myapp 프로젝트를 bitcamp-myapp으로 이전
+  - 빌드 및 실행 확인
+- NCP 리눅스 서버 생성
+  - student 유저 생성
+    - # useradd student
+    - # passwd student
+    - # visudo (/etc/sudoerc 파일 편집)
+      - student ALL=(ALL:ALL) ALL
+  - root 사용자 로그인 불가하게 설정
+    - # nano /etc/ssh/sshd_config
+      - PermitRootLogin no
+  - yum update 실행
+  - JDK 설치
+    - $ sudo yum install -y https://cdn.azul.com/zulu/bin/zulu-repo-1.0.0-1.noarch.rpm
+    - $ sudo yum install zulu21-jdk
+    - $ nano ~/.bash_profile
+      - export JAVA_HOME=/usr/lib/jvm/java-21-zulu-openjdk
+- NCP 보안 파일 생성
+  - ~$ mkdir config
+  - ~$ cd config
+  - ~/config$ nano ncp.properties
+    - 로컬 파일의 내용 복사
+- 애플리케이션 배치 및 실행
+  - ~$ mkdir git
+  - ~$ cd git
+  - ~/git$ git clone https://github.com/username/bitcamp-myapp
+  - ~/git$ cd bitcamp-myapp
+  - ~/git/bitcamp-myapp$ ./gradlew build
+  - ~/git/bitcamp-myapp$ java -Dspring.profiles.active=prod -jar ./app/build/libs/myapp.jar
+- MySQL ACL에 접속 서버의 IP 등록
+  - NCP 콘솔에서 편집
+- Docker 엔진 설치
+- Docker Image 만들기
+  - Dockerfile 생성
+  - 이미지 빌드
+    - `docker build -t 도커허브사용자아이디/이미지명:태그명 .`
 
 
-  
 ## 소스 파일
 
